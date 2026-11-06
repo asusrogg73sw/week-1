@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Next.js 15 & TypeScript Fundamentals Assignment
 
-## Getting Started
+This repository contains my completed 4-day practical assignment covering the core concepts of **Next.js 15 (App Router)**, **TypeScript**, and **Tailwind CSS**.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
+* **Language:** [TypeScript](https://www.typescriptlang.org/)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+* **Library:** React 19
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📅 Completed Days & Features
 
-## Learn More
+### 🟢 Day 1: Next.js 15 Setup & App Router Anatomy
+* Created Next.js 15 application using TypeScript, Tailwind, and App Router architecture.
+* Explored file-based routing: `page.tsx`, `layout.tsx`, and `loading.tsx` (with UI skeleton).
+* Organized routes using route groups `(marketing)`.
+* **Routes created:**
+  * `/` (Home)
+  * `/about` (About page)
+  * `/pricing` (Marketing route group)
 
-To learn more about Next.js, take a look at the following resources:
+### 🟢 Day 2: Server vs Client Components
+* Explored the distinction between **Server Components** (default) and **Client Components** (`'use client'`).
+* Built a client-side `Counter` component using `useState`.
+* Built a server-side `ProductList` component passing serializable props to child components.
+* Tested boundary errors when mixing interactivity inside Server Components.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🟢 Day 3: TypeScript Essentials
+* Defined component props using TypeScript `interface`.
+* Implemented a custom generic function `wrapInArray<T>(item: T): T[]`.
+* Used utility types like `Partial<User>` for update functions.
+* Ensured end-to-end type safety across components.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🟢 Day 4: Tailwind CSS & Responsive Design
+* Implemented mobile-first responsive utility classes (`sm:`, `md:`, `lg:`).
+* Designed a responsive pricing section layout (`grid-cols-1 sm:grid-cols-2 lg:grid-cols-3`).
+* Added interactive hover and focus state variants to cards.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚦 Getting Started
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+To run this project locally:
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git)
+   cd YOUR_REPOSITORY_NAME
