@@ -1,5 +1,11 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+} from "@/components/ui/card";
 
 const values = [
   {
@@ -24,7 +30,7 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen overflow-hidden bg-background text-foreground">
+    <div className="min-h-screen overflow-hidden bg-background text-foreground">
 
       {/* Hero Section */}
       <section className="relative px-6 py-24 md:py-32">
@@ -38,7 +44,7 @@ export default function AboutPage() {
 
           <h1 className="mx-auto mt-7 max-w-4xl text-5xl font-extrabold leading-tight md:text-7xl">
             We Believe in
-            <span className="block bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">
+            <span className="block bg-linear-to-r from-primary to-blue-500 bg-clip-text text-transparent">
               Making a Difference.
             </span>
           </h1>
@@ -104,17 +110,17 @@ export default function AboutPage() {
             </p>
 
             <div className="mt-9">
-              <Link href="/contact">
-                <Button size="lg" className="rounded-xl px-7 py-6 font-semibold">
+              <Button asChild size="lg" className="rounded-xl px-7 py-6 font-semibold">
+                <Link href="/contact">
                   Let&apos;s Connect →
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Mission / Vision / Values */}
+      {/* Mission / Vision / Values using Shadcn Card */}
       <section className="bg-muted/40 px-6 py-24">
         <div className="mx-auto max-w-7xl">
 
@@ -135,22 +141,25 @@ export default function AboutPage() {
 
           <div className="grid gap-7 md:grid-cols-3">
             {values.map((value) => (
-              <div
+              <Card
                 key={value.title}
-                className="group rounded-2xl border border-border bg-card p-8 transition duration-300 hover:-translate-y-2 hover:border-primary/50 text-card-foreground shadow-sm"
+                className="group rounded-2xl border border-border bg-card p-8 transition duration-300 hover:-translate-y-2 hover:border-primary/50 text-card-foreground shadow-sm flex flex-col justify-between"
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-3xl transition group-hover:bg-primary/20 text-primary">
-                  {value.icon}
-                </div>
-
-                <h3 className="mt-7 text-2xl font-bold">
-                  {value.title}
-                </h3>
-
-                <p className="mt-4 leading-7 text-muted-foreground">
-                  {value.description}
-                </p>
-              </div>
+                <CardHeader className="p-0">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-3xl transition group-hover:bg-primary/20 text-primary">
+                    {value.icon}
+                  </div>
+                  <CardTitle className="mt-7 text-2xl font-bold">
+                    {value.title}
+                  </CardTitle>
+                </CardHeader>
+                
+                <CardContent className="p-0 mt-4">
+                  <p className="leading-7 text-muted-foreground">
+                    {value.description}
+                  </p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
@@ -172,15 +181,15 @@ export default function AboutPage() {
           </p>
 
           <div className="mt-9">
-            <Link href="/contact">
-              <Button size="lg" className="rounded-xl px-8 py-6 font-semibold">
+            <Button asChild size="lg" className="rounded-xl px-8 py-6 font-semibold">
+              <Link href="/contact">
                 Contact Us →
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
 
-    </main>
+    </div>
   );
 }

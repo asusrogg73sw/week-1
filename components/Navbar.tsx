@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import ThemeToggle from "@/components/ThemeToggle"; // <-- Native toggle import kiya
+import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -34,11 +34,11 @@ export default function Navbar() {
         {/* Desktop CTA & Native Theme Toggle */}
         <div className="hidden items-center gap-3 md:flex">
           <ThemeToggle />
-          <Link href="/pricing">
-            <Button className="rounded-full px-6 font-semibold shadow-sm">
+          <Button asChild className="rounded-full px-6 font-semibold shadow-sm">
+            <Link href="/pricing">
               Get Started →
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </div>
 
         {/* Mobile Menu & Native Theme Toggle */}
@@ -67,11 +67,11 @@ export default function Navbar() {
               </div>
 
               <div className="mt-3 border-t border-border pt-3">
-                <Link href="/pricing" className="block w-full">
-                  <Button className="w-full rounded-xl font-semibold">
+                <Button asChild className="w-full rounded-xl font-semibold">
+                  <Link href="/pricing">
                     Get Started →
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             </div>
           </details>

@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Raleway, Noto_Serif, Public_Sans } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Raleway,
+  Noto_Serif,
+  Public_Sans,
+} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { cn } from "@/lib/utils";
 
-const publicSansHeading = Public_Sans({subsets:['latin'],variable:'--font-heading'});
+const publicSansHeading = Public_Sans({
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
 
-const notoSerif = Noto_Serif({subsets:['latin'],variable:'--font-serif'});
+const notoSerif = Noto_Serif({ subsets: ["latin"], variable: "--font-serif" });
 
-const raleway = Raleway({subsets:['latin'],variable:'--font-sans'});
+const raleway = Raleway({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +43,16 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, raleway.variable, "font-serif", notoSerif.variable, publicSansHeading.variable)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        geistSans.variable,
+        geistMono.variable,
+        raleway.variable,
+        "font-serif",
+        notoSerif.variable,
+        publicSansHeading.variable,
+      )}
     >
       <head>
         <script

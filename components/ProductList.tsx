@@ -1,5 +1,12 @@
 // import Counter from "./Counter";
 import AddToCartButton from "./AddToCartButton";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 
 const products = [
   {
@@ -41,7 +48,7 @@ export default function ProductList() {
 
           <h2 className="mt-7 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
             Explore Our{" "}
-            <span className="bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-primary to-blue-500 bg-clip-text text-transparent">
               Collection.
             </span>
           </h2>
@@ -51,42 +58,44 @@ export default function ProductList() {
             performance all in one place.
           </p>
 
-          <div className="mx-auto mt-7 h-1 w-24 rounded-full bg-gradient-to-r from-primary to-blue-500" />
+          <div className="mx-auto mt-7 h-1 w-24 rounded-full bg-linear-to-r from-primary to-blue-500" />
         </div>
 
-        {/* Products Grid */}
+        {/* Products Grid using Shadcn Card */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => (
-            <div
+            <Card
               key={product.id}
-              className="group relative overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-xl transition-all duration-500 hover:-translate-y-3 hover:border-primary/50 hover:shadow-[0_20px_60px_rgba(var(--primary),0.12)] text-card-foreground"
+              className="group relative overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-xl transition-all duration-500 hover:-translate-y-3 hover:border-primary/50 hover:shadow-[0_20px_60px_rgba(var(--primary),0.12)] text-card-foreground flex flex-col justify-between"
             >
               {/* Card Glow */}
               <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-primary/10 blur-3xl transition-all duration-500 group-hover:bg-primary/20" />
 
-              {/* Product Number & Badge */}
-              <div className="relative flex items-center justify-between">
-                <span className="text-sm font-semibold tracking-widest text-muted-foreground">
-                  PRODUCT 0{product.id}
-                </span>
+              <CardHeader className="p-0">
+                {/* Product Number & Badge */}
+                <div className="relative flex items-center justify-between">
+                  <span className="text-sm font-semibold tracking-widest text-muted-foreground">
+                    PRODUCT 0{product.id}
+                  </span>
 
-                <span className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                  Premium
-                </span>
-              </div>
+                  <span className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                    Premium
+                  </span>
+                </div>
 
-              {/* Product Icon */}
-              <div className="relative mt-8 flex h-32 items-center justify-center rounded-2xl border border-border bg-gradient-to-br from-primary/10 to-blue-500/10 transition-all duration-500 group-hover:border-primary/30 group-hover:from-primary/20 group-hover:to-blue-500/20">
-                <span className="text-6xl transition-transform duration-500 group-hover:scale-125">
-                  {product.icon}
-                </span>
-              </div>
+                {/* Product Icon */}
+                <div className="relative mt-8 flex h-32 items-center justify-center rounded-2xl border border-border bg-linear-to-br from-primary/10 to-blue-500/10 transition-all duration-500 group-hover:border-primary/30 group-hover:from-primary/20 group-hover:to-blue-500/20">
+                  <span className="text-6xl transition-transform duration-500 group-hover:scale-125">
+                    {product.icon}
+                  </span>
+                </div>
+              </CardHeader>
 
-              {/* Product Details */}
-              <div className="relative mt-8">
-                <h3 className="text-2xl font-bold transition-colors group-hover:text-primary">
+              {/* Product Details & Content */}
+              <CardContent className="p-0 mt-8 flex-1">
+                <CardTitle className="text-2xl font-bold transition-colors group-hover:text-primary">
                   {product.name}
-                </h3>
+                </CardTitle>
 
                 <p className="mt-3 min-h-14 text-sm leading-7 text-muted-foreground">
                   {product.description}
@@ -102,17 +111,19 @@ export default function ProductList() {
                     Rs. {product.price.toLocaleString("en-PK")}
                   </p>
                 </div>
+              </CardContent>
 
-                {/* Counter / Action Section */}
-                <div className="mt-7 rounded-2xl border border-border bg-muted/50 p-5">
+              {/* Counter / Action Section -> CardFooter */}
+              <CardFooter className="p-0 mt-7">
+                <div className="w-full rounded-2xl border border-border bg-muted/50 p-5">
                   <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                     Interactive Counter
                   </p>
 
                   <AddToCartButton />
                 </div>
-              </div>
-            </div>
+              </CardFooter>
+            </Card>
           ))}
         </div>
 

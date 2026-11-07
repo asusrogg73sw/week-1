@@ -1,14 +1,11 @@
 import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import ProductList from "@/components/ProductList";
-// import Counter from "@/components/Counter";
-// import UtilCheck from "@/components/UtilCheck";
-// import NameInput from "@/components/NameInput";
 
 export default function Home() {
-  
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
       <section className="relative flex min-h-[85vh] items-center overflow-hidden px-6 py-20">
         {/* Background Effects using theme tokens */}
@@ -25,7 +22,7 @@ export default function Home() {
 
             <h1 className="mt-7 text-5xl font-extrabold leading-tight tracking-tight md:text-6xl lg:text-7xl">
               Create Something
-              <span className="block bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">
+              <span className="block bg-linear-to-r from-primary to-blue-500 bg-clip-text text-transparent">
                 Extraordinary.
               </span>
             </h1>
@@ -36,19 +33,19 @@ export default function Home() {
               something amazing together.
             </p>
 
-            {/* Buttons using Shadcn Button */}
+            {/* Buttons using Shadcn Button with asChild */}
             <div className="mt-9 flex flex-wrap items-center gap-4">
-              <Link href="/about">
-                <Button size="lg" className="rounded-xl px-7 py-6 font-semibold">
+              <Button asChild size="lg" className="rounded-xl px-7 py-6 font-semibold">
+                <Link href="/about">
                   Get Started →
-                </Button>
-              </Link>
+                </Link>
+              </Button>
 
-              <Link href="/contact">
-                <Button variant="outline" size="lg" className="rounded-xl border-border px-7 py-6 font-semibold hover:border-primary hover:text-primary">
+              <Button asChild variant="outline" size="lg" className="rounded-xl border-border px-7 py-6 font-semibold hover:border-primary hover:text-primary">
+                <Link href="/contact">
                   Contact Us
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
 
             {/* Stats */}
@@ -68,57 +65,53 @@ export default function Home() {
                 <p className="mt-1 text-sm text-muted-foreground">Years Experience</p>
               </div>
             </div>
-
-            {/* Counter Components */}
-            {/* <Counter label="My Counter" /> */}
-            {/* <Counter label="Score" initialValue={10} /> */}
-            {/* <UtilCheck /> */}
-            {/* <NameInput /> */}
           </div>
 
-          {/* Right Visual */}
+          {/* Right Visual Card */}
           <div className="relative mx-auto w-full max-w-lg">
-            <div className="absolute inset-0 rounded-[40px] bg-gradient-to-br from-primary/10 to-blue-600/10 blur-3xl" />
+            <div className="absolute inset-0 rounded-[40px] bg-linear-to-br from-primary/10 to-blue-600/10 blur-3xl" />
 
-            <div className="relative overflow-hidden rounded-[32px] border border-border bg-card p-8 shadow-2xl text-card-foreground">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-muted-foreground">Your Next Chapter</p>
-                  <h2 className="mt-2 text-2xl font-bold">
-                    Think Beyond Limits.
-                  </h2>
-                </div>
+            <Card className="relative overflow-hidden rounded-[32px] border border-border bg-card p-8 shadow-2xl text-card-foreground">
+              <CardHeader className="p-0">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-muted-foreground">Your Next Chapter</p>
+                    <h2 className="mt-2 text-2xl font-bold">
+                      Think Beyond Limits.
+                    </h2>
+                  </div>
 
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-2xl text-primary">
-                  ✦
-                </div>
-              </div>
-
-              <div className="my-12 flex aspect-square items-center justify-center rounded-3xl border border-border bg-gradient-to-br from-primary/10 via-primary/5 to-card">
-                <div className="flex h-48 w-48 items-center justify-center rounded-full border border-primary/30 bg-primary/5 shadow-2xl md:h-60 md:w-60">
-                  <div className="flex h-36 w-36 items-center justify-center rounded-full border border-primary/40 bg-gradient-to-br from-primary to-blue-600 text-6xl font-black text-primary-foreground shadow-2xl md:h-44 md:w-44">
-                    M
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-2xl text-primary">
+                    ✦
                   </div>
                 </div>
-              </div>
+              </CardHeader>
 
-              <div className="flex items-center justify-between rounded-2xl border border-border bg-muted/50 p-5">
-                <div>
-                  <p className="text-sm text-muted-foreground">Make It Happen</p>
-                  <p className="mt-1 font-semibold">Ideas into Reality</p>
+              <CardContent className="p-0">
+                <div className="my-12 flex aspect-square items-center justify-center rounded-3xl border border-border bg-linear-to-br from-primary/10 via-primary/5 to-card">
+                  <div className="flex h-48 w-48 items-center justify-center rounded-full border border-primary/30 bg-primary/5 shadow-2xl md:h-60 md:w-60">
+                    <div className="flex h-36 w-36 items-center justify-center rounded-full border border-primary/40 bg-linear-to-br from-primary to-blue-600 text-6xl font-black text-primary-foreground shadow-2xl md:h-44 md:w-44">
+                      M
+                    </div>
+                  </div>
                 </div>
 
-                <span className="text-3xl text-primary">↗</span>
-              </div>
-            </div>
+                <div className="flex items-center justify-between rounded-2xl border border-border bg-muted/50 p-5">
+                  <div>
+                    <p className="text-sm text-muted-foreground">Make It Happen</p>
+                    <p className="mt-1 font-semibold">Ideas into Reality</p>
+                  </div>
+
+                  <span className="text-3xl text-primary">↗</span>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
       {/* Product List Section */}
       <ProductList />
-
-      
-    </main>
+    </div>
   );
 }

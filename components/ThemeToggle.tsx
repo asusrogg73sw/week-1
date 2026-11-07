@@ -1,21 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    // Check current state on mount
-    setIsDark(document.documentElement.classList.contains("dark"));
-  }, []);
-
   const toggleTheme = () => {
     const root = document.documentElement;
-    const nextState = !isDark;
-    
-    setIsDark(nextState);
+    const isCurrentlyDark = root.classList.contains("dark");
+    const nextState = !isCurrentlyDark;
+
     root.classList.toggle("dark", nextState);
     localStorage.setItem("theme", nextState ? "dark" : "light");
   };
@@ -27,7 +19,12 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       className="rounded-full h-10 w-10 border-border bg-background hover:bg-primary/10 hover:text-primary transition-all duration-300"
     >
-      {isDark ? "☀️" : "🌙"}
+      {/* Light mode mein Moon dikhega, dark mode mein chup jayega */}
+      <span className="inline dark:hidden text-base">🌙</span>
+      
+      {/* Dark mode mein Sun dikhega, light mode mein chup jayega */}
+      <span className="hidden dark:inline text-base">☀️</span>
+      
       <span className="sr-only">Toggle theme</span>
     </Button>
   );

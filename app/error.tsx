@@ -11,7 +11,7 @@ export default function Error({
   reset: () => void;
 }) {
   return (
-    <main className="min-h-[80vh] flex flex-col items-center justify-center gap-6 bg-background px-6 text-foreground text-center">
+    <div className="min-h-[80vh] flex flex-col items-center justify-center gap-6 bg-background px-6 text-foreground text-center">
       
       {/* Icon or Status Badge */}
       <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-destructive/10 text-destructive text-3xl font-bold">
@@ -35,17 +35,13 @@ export default function Error({
           Try Again
         </Button>
 
-        <Link href="/">
-          <Button
-            variant="outline"
-            size="lg"
-            className="rounded-xl px-7 font-semibold"
-          >
+        <Button asChild variant="outline" size="lg" className="rounded-xl px-7 font-semibold">
+          <Link href="/">
             Go Home →
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       </div>
 
-    </main>
+    </div>
   );
 }

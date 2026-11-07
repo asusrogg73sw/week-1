@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <main
+    <div
       aria-busy="true"
       aria-live="polite"
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background px-6 py-16 text-foreground"
@@ -14,7 +14,7 @@ export default function Loading() {
         {/* Animated Loader */}
         <div className="relative mx-auto flex h-20 w-20 items-center justify-center">
           <div className="absolute inset-0 animate-spin rounded-full border-4 border-muted border-t-primary" />
-          <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary to-blue-600 shadow-lg shadow-primary/30" />
+          <div className="h-10 w-10 rounded-full bg-linear-to-br from-primary to-blue-600 shadow-lg shadow-primary/30" />
         </div>
 
         {/* Loading Text */}
@@ -29,7 +29,7 @@ export default function Loading() {
 
         {/* Loading Progress Animation */}
         <div className="mx-auto mt-8 h-1.5 w-48 overflow-hidden rounded-full bg-muted">
-          <div className="h-full w-1/2 animate-pulse rounded-full bg-gradient-to-r from-primary to-blue-500" />
+          <div className="h-full w-1/2 animate-pulse rounded-full bg-linear-to-r from-primary to-blue-500" />
         </div>
 
         {/* Skeleton Cards */}
@@ -56,6 +56,6 @@ export default function Loading() {
 
       {/* Screen Reader Text */}
       <span className="sr-only">Loading, please wait...</span>
-    </main>
+    </div>
   );
 }
