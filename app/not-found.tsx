@@ -1,13 +1,12 @@
-
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-indigo-950 to-purple-950 px-6 text-white">
-
+    <main className="min-h-[80vh] flex items-center justify-center bg-background px-6 text-foreground">
       <div className="text-center max-w-xl">
 
-        <h1 className="text-9xl font-black tracking-widest bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+        <h1 className="text-9xl font-black tracking-widest bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">
           404
         </h1>
 
@@ -15,23 +14,20 @@ export default function NotFound() {
           Oops! Page Not Found
         </h2>
 
-        <p className="text-gray-300 mt-4">
+        <p className="text-muted-foreground mt-4">
           Sorry! Jo page aap dhoond rahe hain,
           woh exist nahi karta.
         </p>
 
         <div className="flex gap-4 justify-center mt-8">
-
-          <Link
-            href="/"
-            className="bg-indigo-600 hover:bg-indigo-500 px-6 py-3 rounded-xl font-semibold transition duration-300 shadow-lg"
-          >
-            Go Home →
+          <Link href="/">
+            <Button size="lg" className="rounded-xl px-7 py-6 font-semibold shadow-lg">
+              Go Home →
+            </Button>
           </Link>
-
         </div>
 
-        <p className="text-gray-500 text-sm mt-12">
+        <p className="text-muted-foreground/60 text-sm mt-12">
           © 2026 | Lost in Space 🚀
         </p>
 

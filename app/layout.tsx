@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "../components/Navbar";
+import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,12 +22,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      {/* 
+        Changes made:
+        1. Added `bg-background text-foreground` so theme colors apply globally.
+        2. Added `font-sans` to ensure Geist font is the default typography.
+      */}
+      <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
         <Navbar />
 
-        {children}
+        {/* Main wrapper to push footer down if added later */}
+        <main className="flex-1">
+          {children}
+        </main>
       </body>
     </html>
   );

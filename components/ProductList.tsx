@@ -1,5 +1,4 @@
 // import Counter from "./Counter";
-
 import AddToCartButton from "./AddToCartButton";
 
 const products = [
@@ -27,34 +26,32 @@ const products = [
 ];
 
 export default function ProductList() {
-  // console.log("ProductList chala");
-
   return (
-    <section className="relative overflow-hidden bg-slate-950 px-6 py-24 text-white">
-      {/* Background Effects */}
-      <div className="absolute -left-40 top-20 h-96 w-96 rounded-full bg-cyan-500/10 blur-[120px]" />
-      <div className="absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-blue-600/10 blur-[120px]" />
+    <section className="relative overflow-hidden bg-background px-6 py-24 text-foreground">
+      {/* Background Glow Effects using theme primary color */}
+      <div className="absolute -left-40 top-20 h-96 w-96 rounded-full bg-primary/10 blur-[120px]" />
+      <div className="absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-primary/5 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl">
         {/* Section Heading */}
         <div className="mb-16 text-center">
-          <span className="inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-5 py-2 text-sm font-medium text-cyan-300">
+          <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-5 py-2 text-sm font-medium text-primary">
             Our Products
           </span>
 
           <h2 className="mt-7 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
             Explore Our{" "}
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">
               Collection.
             </span>
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-400 md:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-muted-foreground md:text-lg">
             Discover our premium collection of products. Quality, innovation and
             performance all in one place.
           </p>
 
-          <div className="mx-auto mt-7 h-1 w-24 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500" />
+          <div className="mx-auto mt-7 h-1 w-24 rounded-full bg-gradient-to-r from-primary to-blue-500" />
         </div>
 
         {/* Products Grid */}
@@ -62,24 +59,24 @@ export default function ProductList() {
           {products.map((product) => (
             <div
               key={product.id}
-              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-slate-800 to-slate-900 p-8 shadow-xl transition-all duration-500 hover:-translate-y-3 hover:border-cyan-400/50 hover:shadow-[0_20px_60px_rgba(34,211,238,0.12)]"
+              className="group relative overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-xl transition-all duration-500 hover:-translate-y-3 hover:border-primary/50 hover:shadow-[0_20px_60px_rgba(var(--primary),0.12)] text-card-foreground"
             >
               {/* Card Glow */}
-              <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-cyan-400/10 blur-3xl transition-all duration-500 group-hover:bg-cyan-400/20" />
+              <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-primary/10 blur-3xl transition-all duration-500 group-hover:bg-primary/20" />
 
-              {/* Product Number */}
+              {/* Product Number & Badge */}
               <div className="relative flex items-center justify-between">
-                <span className="text-sm font-semibold tracking-widest text-slate-500">
+                <span className="text-sm font-semibold tracking-widest text-muted-foreground">
                   PRODUCT 0{product.id}
                 </span>
 
-                <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs font-medium text-cyan-300">
+                <span className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
                   Premium
                 </span>
               </div>
 
               {/* Product Icon */}
-              <div className="relative mt-8 flex h-32 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-cyan-400/10 to-blue-500/10 transition-all duration-500 group-hover:border-cyan-400/30 group-hover:from-cyan-400/20 group-hover:to-blue-500/20">
+              <div className="relative mt-8 flex h-32 items-center justify-center rounded-2xl border border-border bg-gradient-to-br from-primary/10 to-blue-500/10 transition-all duration-500 group-hover:border-primary/30 group-hover:from-primary/20 group-hover:to-blue-500/20">
                 <span className="text-6xl transition-transform duration-500 group-hover:scale-125">
                   {product.icon}
                 </span>
@@ -87,34 +84,32 @@ export default function ProductList() {
 
               {/* Product Details */}
               <div className="relative mt-8">
-                <h3 className="text-2xl font-bold transition-colors group-hover:text-cyan-400">
+                <h3 className="text-2xl font-bold transition-colors group-hover:text-primary">
                   {product.name}
                 </h3>
 
-                <p className="mt-3 min-h-14 text-sm leading-7 text-slate-400">
+                <p className="mt-3 min-h-14 text-sm leading-7 text-muted-foreground">
                   {product.description}
                 </p>
 
                 {/* Price */}
-                <div className="mt-7 border-t border-white/10 pt-6">
-                  <p className="text-sm font-medium text-slate-400">
+                <div className="mt-7 border-t border-border pt-6">
+                  <p className="text-sm font-medium text-muted-foreground">
                     Starting Price
                   </p>
 
-                  <p className="mt-2 text-3xl font-extrabold text-cyan-400">
+                  <p className="mt-2 text-3xl font-extrabold text-primary">
                     Rs. {product.price.toLocaleString("en-PK")}
                   </p>
                 </div>
 
-                {/* Counter */}
-                <div className="mt-7 rounded-2xl border border-white/10 bg-slate-950/50 p-5">
-                  <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-slate-400">
+                {/* Counter / Action Section */}
+                <div className="mt-7 rounded-2xl border border-border bg-muted/50 p-5">
+                  <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                     Interactive Counter
                   </p>
 
                   <AddToCartButton />
-
-                  {/* <Counter label={product.name}/> */}
                 </div>
               </div>
             </div>
@@ -123,7 +118,7 @@ export default function ProductList() {
 
         {/* Bottom Text */}
         <div className="mt-16 text-center">
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-muted-foreground">
             Quality Products. Modern Experience. Better Future.
           </p>
         </div>

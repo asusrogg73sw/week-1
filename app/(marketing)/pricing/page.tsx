@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
-// STEP D: TypeScript Interface for Plan data typing
+// TypeScript Interface for Plan data typing
 interface Plan {
   name: string;
   price: number;
@@ -8,7 +9,7 @@ interface Plan {
   popular?: boolean; // Optional property for the Pro/Popular plan highlight
 }
 
-// Pricing plans data array as required in the assignment
+// Pricing plans data array
 const plans: Plan[] = [
   {
     name: "Basic",
@@ -19,7 +20,7 @@ const plans: Plan[] = [
     name: "Pro",
     price: 25,
     features: ["10 Projects", "Priority support"],
-    popular: true, // Pro plan ko highlight karne ke liye
+    popular: true, // Pro plan highlight
   },
   {
     name: "Team",
@@ -30,22 +31,22 @@ const plans: Plan[] = [
 
 export default function PricingPage() {
   return (
-    <main className="min-h-screen bg-slate-950 px-6 py-20 text-white">
+    <main className="min-h-screen bg-background px-6 py-20 text-foreground">
       <div className="mx-auto max-w-7xl">
         {/* Header Section */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block rounded-full border border-cyan-400/30 bg-cyan-400/10 px-5 py-2 text-sm font-medium text-cyan-300">
+          <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-5 py-2 text-sm font-medium text-primary">
             Simple & Transparent Pricing
           </span>
 
           <h1 className="mt-7 text-4xl font-extrabold leading-tight md:text-6xl">
-            Choose the Right Plan {/* Tailwind v4 compatible linear gradient */}
-            <span className="block bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            Choose the Right Plan
+            <span className="block bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">
               For Your Needs.
             </span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base text-slate-400 md:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground md:text-lg">
             Flexible pricing plans designed to help you get started and grow
             your business.
           </p>
@@ -58,31 +59,38 @@ export default function PricingPage() {
               key={plan.name}
               className={`flex flex-col rounded-xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
                 plan.popular
-                  ? "border-cyan-400 bg-slate-900 shadow-cyan-950/50"
-                  : "border-white/10 bg-slate-900/50 hover:border-cyan-400/40"
+                  ? "border-primary bg-card shadow-lg shadow-primary/10 ring-2 ring-primary/20"
+                  : "border-border bg-card/50 hover:border-primary/40 text-card-foreground"
               }`}
             >
               {/* Plan Name & Price */}
               <div>
-                <h2 className="text-2xl font-bold">{plan.name}</h2>
+                <div className="flex items-center justify-between">
+                  <h2 className="text-2xl font-bold">{plan.name}</h2>
+                  {plan.popular && (
+                    <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                      Popular
+                    </span>
+                  )}
+                </div>
                 <div className="mt-4 flex items-baseline gap-1">
                   <span className="text-4xl font-extrabold">${plan.price}</span>
-                  <span className="text-sm text-slate-400">/ month</span>
+                  <span className="text-sm text-muted-foreground">/ month</span>
                 </div>
               </div>
 
-              {/* Features List (Nested .map() implementation) */}
+              {/* Features List */}
               <div className="mt-8 flex-1">
-                <h3 className="text-sm font-semibold text-slate-300 mb-4">
+                <h3 className="text-sm font-semibold text-foreground mb-4">
                   What&apos;s included:
                 </h3>
                 <ul className="space-y-3">
                   {plan.features.map((feature, index) => (
                     <li
                       key={index}
-                      className="flex items-center gap-3 text-sm text-slate-400"
+                      className="flex items-center gap-3 text-sm text-muted-foreground"
                     >
-                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-400/10 text-xs text-cyan-400">
+                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs text-primary">
                         ✓
                       </span>
                       {feature}
@@ -91,17 +99,15 @@ export default function PricingPage() {
                 </ul>
               </div>
 
-              {/* CTA Button */}
+              {/* CTA Button using Shadcn Button */}
               <div className="mt-8">
-                <Link
-                  href="/contact"
-                  className={`block w-full rounded-xl py-3 text-center font-semibold transition ${
-                    plan.popular
-                      ? "bg-cyan-400 text-slate-950 hover:bg-cyan-300"
-                      : "border border-white/10 bg-white/5 text-white hover:border-cyan-400 hover:bg-cyan-400/10 hover:text-cyan-400"
-                  }`}
-                >
-                  Get Started →
+                <Link href="/contact" className="block w-full">
+                  <Button
+                    variant={plan.popular ? "default" : "outline"}
+                    className="w-full rounded-xl py-6 font-semibold"
+                  >
+                    Get Started →
+                  </Button>
                 </Link>
               </div>
             </div>
