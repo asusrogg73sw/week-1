@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "@/components/ThemeToggle"; // <-- Native toggle import kiya
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -30,8 +31,9 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Desktop CTA using Shadcn Button */}
-        <div className="hidden md:inline-flex">
+        {/* Desktop CTA & Native Theme Toggle */}
+        <div className="hidden items-center gap-3 md:flex">
+          <ThemeToggle />
           <Link href="/pricing">
             <Button className="rounded-full px-6 font-semibold shadow-sm">
               Get Started →
@@ -39,37 +41,41 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Menu - No JavaScript */}
-        <details className="group relative md:hidden">
-          <summary className="flex cursor-pointer list-none items-center gap-2 rounded-xl border border-border px-4 py-2.5 text-sm font-medium transition hover:border-primary hover:text-primary [&::-webkit-details-marker]:hidden">
-            <span className="group-open:hidden">☰</span>
-            <span className="hidden group-open:inline">✕</span>
-            Menu
-          </summary>
+        {/* Mobile Menu & Native Theme Toggle */}
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
 
-          {/* Mobile Dropdown */}
-          <div className="absolute right-0 top-14 w-64 rounded-2xl border border-border bg-card p-4 shadow-2xl text-card-foreground">
-            <div className="flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="rounded-xl px-4 py-3 text-sm font-medium text-muted-foreground transition hover:bg-primary/10 hover:text-primary"
-                >
-                  {link.name}
+          <details className="group relative">
+            <summary className="flex cursor-pointer list-none items-center gap-2 rounded-xl border border-border px-4 py-2.5 text-sm font-medium transition hover:border-primary hover:text-primary [&::-webkit-details-marker]:hidden">
+              <span className="group-open:hidden">☰</span>
+              <span className="hidden group-open:inline">✕</span>
+              Menu
+            </summary>
+
+            {/* Mobile Dropdown */}
+            <div className="absolute right-0 top-14 w-64 rounded-2xl border border-border bg-card p-4 shadow-2xl text-card-foreground">
+              <div className="flex flex-col gap-2">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="rounded-xl px-4 py-3 text-sm font-medium text-muted-foreground transition hover:bg-primary/10 hover:text-primary"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="mt-3 border-t border-border pt-3">
+                <Link href="/pricing" className="block w-full">
+                  <Button className="w-full rounded-xl font-semibold">
+                    Get Started →
+                  </Button>
                 </Link>
-              ))}
+              </div>
             </div>
-
-            <div className="mt-3 border-t border-border pt-3">
-              <Link href="/pricing" className="block w-full">
-                <Button className="w-full rounded-xl font-semibold">
-                  Get Started →
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </details>
+          </details>
+        </div>
 
       </nav>
     </header>
